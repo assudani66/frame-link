@@ -1,4 +1,4 @@
-import { SignUp } from "./features/auth";
+import { SignUp } from "@/features/auth";
 
 export default function Home() {
   return (

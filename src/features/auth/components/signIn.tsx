@@ -1,34 +1,16 @@
 "use client";
-import { Input } from "@/app/components";
+import { Input } from "@/components";
 import React from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Button } from "@/components/UI/button";
+import { Icon } from '@iconify/react';
+import { signOut, signUpwithGoogle } from "../services";
 
-const supabase = createClientComponentClient();
-
-const signUpwithGoogle = async () => {
-  const { data } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-  });
-  console.log(data);
-};
-
-const getUserSession = async () => {
-  const data = await supabase.auth.getSession();
-  console.log(data);
-};
-
-const signOut = async () => {
-  const { error } = await supabase.auth.signOut();
-  if (error) throw error;
-};
 export const SignUp = () => {
   return (
     <div className="flex flex-col ">
-      <Input placeholder="email" className="" />
-      <Input />
-      <button onClick={() => getUserSession()}>getSession</button>
-      <button onClick={() => signUpwithGoogle()}>sign In with google</button>
-      <button onClick={() => signOut()}>sign out</button>
+      <Input placeholder="email" />
+      <Button onClick={() => signUpwithGoogle()}>sign In with google</Button>
+      <Button onClick={() => signOut()}>sign out</Button>
     </div>
   );
 };
