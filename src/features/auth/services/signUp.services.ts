@@ -7,6 +7,11 @@ export const signUpwithGoogle = async () => {
   console.log(data);
 };
 
+export const getUserSession = async () => {
+  const data = await supabaseClientComponent.auth.getSession();
+  console.log(data);
+};
+
 export const signOut = async () => {
   const { error } = await supabaseClientComponent.auth.signOut();
   if (error) throw error;
